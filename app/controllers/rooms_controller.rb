@@ -1,12 +1,12 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = current_user.rooms
     @room = Room.new
     @users = User.except_me(current_user)
   end
 
   def show
-    @rooms = Room.all
+    @rooms = current_user.rooms
     @users = User.except_me(current_user)
     @room = Room.new
     @single_room = Room.find(params[:id])
