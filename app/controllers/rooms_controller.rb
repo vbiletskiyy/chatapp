@@ -1,12 +1,12 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = current_user.rooms
+    @rooms = Room.not_private
     @room = Room.new
     @users = User.except_me(current_user)
   end
 
   def show
-    @rooms = current_user.rooms
+    @rooms = Room.not_private
     @users = User.except_me(current_user)
     @room = Room.new
     @single_room = Room.find(params[:id])
